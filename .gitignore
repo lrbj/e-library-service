@@ -1,0 +1,93 @@
+# ---------- Build output ----------
+target/
+build/
+out/
+*.class
+*.jar
+*.war
+*.ear
+
+# Keep the Maven wrapper jar if you ever add one
+!/.mvn/wrapper/maven-wrapper.jar
+
+# ---------- Maven ----------
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.properties
+dependency-reduced-pom.xml
+release.properties
+pom.xml.versionsBackup
+pom.xml.releaseBackup
+
+# ---------- IDE: IntelliJ IDEA ----------
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# ---------- IDE: Eclipse / STS ----------
+.classpath
+.project
+.settings/
+.factorypath
+bin/
+.apt_generated/
+
+# ---------- IDE: VS Code ----------
+.vscode/
+!.vscode/settings.json.example
+
+# ---------- IDE: NetBeans ----------
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# ---------- OS ----------
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# ---------- Logs & runtime ----------
+*.log
+logs/
+hs_err_pid*.log
+replay_pid*.log
+
+# ---------- Local database / H2 files ----------
+*.mv.db
+*.trace.db
+*.h2.db
+h2/
+
+# ---------- Local configuration & secrets ----------
+# Anything machine-specific belongs in application-local.yml, never in the repo.
+application-local.yml
+application-local.properties
+*.env
+.env
+secrets/
+*.pem
+*.p12
+*.jks
+
+# ---------- Temporary files ----------
+*.tmp
+*.bak
+*.orig
+*.rej
+*~
+tmp/
+
+# ---------- Test / coverage reports ----------
+surefire-reports/
+failsafe-reports/
+jacoco.exec
+*.exec
+site/
+
+# ---------- Node (in case a docs/UI toolchain is added later) ----------
+node_modules/
+npm-debug.log*
+yarn-error.log*

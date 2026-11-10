@@ -1,0 +1,58 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: e-library
+  datasource:
+    # One shared in-memory instance per JVM: the schema must exist before any
+    # @SpringBootTest context starts, hence a named database rather than create-drop.
+    url: jdbc:h2:mem:elibrary;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: update
+    # data.sql depends on the tables Hibernate creates, so run it afterwards.
+    defer-datasource-initialization: true
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: false
+  sql:
+    init:
+      # data.sql only creates the "one active loan per user per book" unique index;
+      # it is idempotent and must run after Hibernate has created the tables.
+      mode: always
+      continue-on-error: false
+  h2:
+    console:
+      enabled: true
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    default-property-inclusion: non_null
+
+# Business rules that are NOT hard-coded in the domain logic.
+library:
+  loan:
+    period-days: 14
+    max-per-user: 5
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    com.elibrary: INFO
